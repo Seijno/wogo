@@ -1,13 +1,12 @@
 <script>
-  import { Button, ArrowRight } from '$lib/index'
+  import { Button, ArrowRight, Image} from '$lib/index'
   export let items
 </script>
 
 <section>
 
-
-  <figure>
-    <img src="/ash-edmonds-fsI-_MRsic0-unsplash.jpg" alt="Cocktail image">
+<figure>
+    <Image src={items[0].asset.url}  width="/" height="/" loading="lazy"></Image>
 </figure>
   <div class="hero-content">
     <p>{items[0].location}</p>
@@ -34,19 +33,9 @@
     overflow: hidden;
   }
 
-  video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
+  figure{
+    width: 100%;
   }
-
   .hero-content {
     padding: 1rem;
     margin-top: 3rem;

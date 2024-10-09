@@ -1,8 +1,6 @@
 <script>
-    import { RotterdamTicketHero, Filter, TicketCard } from '$lib/index'
+    import { RotterdamTicketHero, TicketCard } from '$lib/index'
     export let items
-    export let itemCollection
-    export let cities
   </script>
   
   <section>
