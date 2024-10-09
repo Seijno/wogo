@@ -3,18 +3,20 @@ Welkom bij de WOGO Website, een website gebouwd met SvelteKit en Contentful. WOG
 
 ## Inhoud
 
-### [- Kenmerken]()
-### [- Preview ]()
-### [- Live pagina]()
-### [- Gebruikersaanwijzing]()
-### [- Huisstijl]()
-### [- Bronnen]()
-### [- Installatiehandleiding]()
+### [- Kenmerken](https://github.com/Seijno/wogo?tab=readme-ov-file#kenmerken)
+### [- Preview ](https://github.com/Seijno/wogo?tab=readme-ov-file#preview)
+### [- Live pagina](https://github.com/Seijno/wogo?tab=readme-ov-file#live-pagina)
+### [- Gebruikersaanwijzing](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
+### [- Huisstijl](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
+### [- Bronnen](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
+### [- Installatie](https://github.com/Seijno/wogo?tab=readme-ov-file#installatie)
 
 
 ## Kenmerken
 🖋 WOGO Huisstijl: De site is opgezet met de aangeleverde WOGO Huisstijl. 
+
 🏠 Homepagina: De gebruiker komt terecht op de homepage. Hier ziet je een overzicht van hoe WOGO werkt, wat WOGO doet en kan je ook de cocktail walks exploren. Ook zie je reviews van mensen die eerder een WOGO cocktail ervaring hebben gekocht. 
+
 🚶🏽‍♀️Route Pagina: Bij de Rotterdam Route pagina is meer detail te vinden over wat je eigenlijk koopt. Er is te lezen dat je 3 barren bezoekt, cocktails inclusief zijn en meer over de boeking.
 
 🛠SvelteKit & Contentful: De website is gebouwd met SvelteKit en haalt de data dynamisch op via de Contentful API.
@@ -56,18 +58,24 @@ Zowel de homepage als rotterdam ticket page bevatten animaties. Bij de hero komt
 Hier vind je de bronnen van de tools die we hebben gebruikt. 
 
 ### [Sveltekit](https://kit.svelte.dev/)
-![image](https://github.com/user-attachments/assets/27f8ed03-7202-4a01-9924-0f358fc5e75c)
+Voor het bouwen van de site
+
+### [Svelte Docs](https://svelte.dev/docs/special-elements#svelte-component)
+Over het dynamisch maken van de site
 
 ### [Vercel Docs](https://vercel.com/docs/frameworks/sveltekit)
-![image](https://github.com/user-attachments/assets/f55ed6b2-1d62-4999-9d23-7e4fb1f00cf3)
+Voor het live zetten van de site
 
 ### [Contentful](https://www.contentful.com)
+Voor het ophalen van de data
 
+## [Atomic Web Design](https://bradfrost.com/blog/post/atomic-web-design/)
+Werken met atoms, molecules, organisms
 
-## Installatiehandleiding
+## Installatie
 Instructies voor het lokaal opzetten van de squadpage, zodat ontwikkelaars het project kunnen downloaden, installeren en zelf kunnen draaien met behulp van SvelteKit.
 
-**1. Vereisten**
+*1. Vereisten*
 
 Zorg ervoor dat je de volgende software hebt geïnstalleerd:
 
@@ -76,18 +84,18 @@ Zorg ervoor dat je de volgende software hebt geïnstalleerd:
 
 Ook heb je voor dit project een .env file nodig. Bekijk onze .env.example wat hier in komt te staan
 
-**2. git repository clonen**
+*2. git repository clonen*
 
 Je kunt op de main pagina de repo clonen en je eigen lokale versie opvragen.
 
-**3. SvelteKit en packets installeren**
+*3. SvelteKit en packets installeren*
 
 Om aan het project te werken, moet je eerst een nieuw SvelteKit-project opzetten. Dit kan eenvoudig gedaan worden met create-svelte.
 
 Open je terminal.
 Voer ```npm install``` of ```yarn install``` uit om de juiste packets te installeren om aan het project te werken.
 
-**4. Deployen op vercel**
+*4. Deployen op vercel*
 
 Op [vercel.com](https://vercel.com/docs/frameworks/sveltekit) kun je verder op weg met het deployen van een svelteproject. 
 
