@@ -1,5 +1,6 @@
 <script>
     import { RotterdamTicketHero, Filter, TicketCard } from '$lib/index'
+    export let items
     export let itemCollection
     export let cities
   </script>
@@ -14,6 +15,7 @@
     <title></title>
   </svelte:head>
   
+  <RotterdamTicketHero {items} />
   <style>
     h1 {
       color: white;
