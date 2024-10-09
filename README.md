@@ -49,7 +49,7 @@ Wij hebben van WOGO kleuren en fonts gehad waar wij mee kunnen werken.
 
 Dit gaat om de fonts Lulo Clean One en Brandon Grotesque.
 
-Hoe wij deze gebruiken/ toepassen in het project is te lezen in onze wiki onder ![Conventies](https://github.com/Seijno/wogo/wiki/Conventies)
+Hoe wij deze gebruiken/ toepassen in het project is te lezen in onze wiki onder [Conventies](https://github.com/Seijno/wogo/wiki/Conventies)
 
 ### Animaties
 Zowel de homepage als rotterdam ticket page bevatten animaties. Bij de hero komt de tekst van links in beeld naar rechts. Voor de kaarten van How it Works (homepage) komen de kaarten tevoorschijn zodra je scrollt.
