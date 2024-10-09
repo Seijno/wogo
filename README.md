@@ -7,9 +7,9 @@ Welkom bij de WOGO Website, een website gebouwd met SvelteKit en Contentful. WOG
 ### [Preview ](https://github.com/Seijno/wogo?tab=readme-ov-file#preview)
 ### [Live pagina](https://github.com/Seijno/wogo?tab=readme-ov-file#live-pagina)
 ### [Gebruikersaanwijzing](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing-1)
-### [Huisstijl](https://github.com/Seijno/wogo?tab=readme-ov-file#huisstijl)
-### [Bronnen](https://github.com/Seijno/wogo?tab=readme-ov-file#bronnen)
-### [Installatie](https://github.com/Seijno/wogo?tab=readme-ov-file#installatie)
+### [Huisstijl](https://github.com/Seijno/wogo?tab=readme-ov-file#huisstijl-1)
+### [Bronnen](https://github.com/Seijno/wogo?tab=readme-ov-file#bronnen-1)
+### [Installatie](https://github.com/Seijno/wogo?tab=readme-ov-file#installatie-1)
 
 
 ## Kenmerken
