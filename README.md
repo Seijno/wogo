@@ -1,15 +1,15 @@
-# Wogo
+# WOGO
 Welkom bij de WOGO Website, een website gebouwd met SvelteKit en Contentful. WOGO biedt een dynamisch platform voor cocktailbars en sterke drank merken, met functies zoals, ticketverkoop voor cocktail walks en informatie over samenwerkingen.
 
 ## Inhoud
 
-### [- Kenmerken](https://github.com/Seijno/wogo?tab=readme-ov-file#kenmerken)
-### [- Preview ](https://github.com/Seijno/wogo?tab=readme-ov-file#preview)
-### [- Live pagina](https://github.com/Seijno/wogo?tab=readme-ov-file#live-pagina)
-### [- Gebruikersaanwijzing](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
-### [- Huisstijl](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
-### [- Bronnen](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
-### [- Installatie](https://github.com/Seijno/wogo?tab=readme-ov-file#installatie)
+### [Kenmerken](https://github.com/Seijno/wogo?tab=readme-ov-file#kenmerken)
+### [Preview ](https://github.com/Seijno/wogo?tab=readme-ov-file#preview)
+### [Live pagina](https://github.com/Seijno/wogo?tab=readme-ov-file#live-pagina)
+### [Gebruikersaanwijzing](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
+### [Huisstijl](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
+### [Bronnen](https://github.com/Seijno/wogo?tab=readme-ov-file#gebruikersaanwijzing)
+### [Installatie](https://github.com/Seijno/wogo?tab=readme-ov-file#installatie)
 
 
 ## Kenmerken
@@ -57,20 +57,15 @@ Zowel de homepage als rotterdam ticket page bevatten animaties. Bij de hero komt
 ## Bronnen
 Hier vind je de bronnen van de tools die we hebben gebruikt. 
 
-### [Sveltekit](https://kit.svelte.dev/)
-Voor het bouwen van de site
+#### [Sveltekit](https://kit.svelte.dev/) - Voor het bouwen van de site
 
-### [Svelte Docs](https://svelte.dev/docs/special-elements#svelte-component)
-Over het dynamisch maken van de site
+#### [Svelte Docs](https://svelte.dev/docs/special-elements#svelte-component) - Over het dynamisch maken van de site
 
-### [Vercel Docs](https://vercel.com/docs/frameworks/sveltekit)
-Voor het live zetten van de site
+#### [Vercel Docs](https://vercel.com/docs/frameworks/sveltekit) - Voor het live zetten van de site
 
-### [Contentful](https://www.contentful.com)
-Voor het ophalen van de data
+#### [Contentful](https://www.contentful.com) - Voor het ophalen van de data
 
-## [Atomic Web Design](https://bradfrost.com/blog/post/atomic-web-design/)
-Werken met atoms, molecules, organisms
+#### [Atomic Web Design](https://bradfrost.com/blog/post/atomic-web-design/) - Werken met atoms, molecules, organisms
 
 ## Installatie
 Instructies voor het lokaal opzetten van de squadpage, zodat ontwikkelaars het project kunnen downloaden, installeren en zelf kunnen draaien met behulp van SvelteKit.
