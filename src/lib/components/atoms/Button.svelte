@@ -69,6 +69,12 @@
     border: 2px solid var(--btn-primary-bg);
   }
 
+  .btn-menu {
+    border-radius: var(--btn-radius);
+    color: var(--txt-primary-clr);
+    border: 2px solid var(--btn-primary-bg);
+  }
+
   .btn-secondary,
   .btn-primary {
     transition:
