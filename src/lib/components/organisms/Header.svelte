@@ -7,7 +7,7 @@
 <header>
   <span class="skip-link">
     <Button
-      variant="primary"
+      variant="secondair"
       href="#content"
       title="skip to content"
       size="lg"
@@ -24,16 +24,16 @@
       {#each navigation.navigationLinksCollection.items as link}
         {#if link.title === 'More'}
           <li class="more-button">
-            <Button variant="primary" title="more" icon={ArrowDown} size="m" />
+            <button class="">
+              <span class="btn-icon">
+                More
+                <ArrowDown />
+              </span>
+            </button>
             <ul class="more-dropdown">
               {#each link.subLinksCollection.items as sublink}
                 <li>
-                  <Link
-                    href={sublink.slug}
-                    title={sublink.title}
-                    aria-label={sublink.label}
-                    color="var(--txt-dark-clr)"
-                  />
+                  <Link href={sublink.slug} title={sublink.title} aria-label={sublink.label} />
                 </li>
               {/each}
             </ul>
@@ -44,7 +44,7 @@
               href={link.slug}
               title={link.title}
               arialabel={link.label}
-              color="var(--txt-secondary-clr)"
+              color="var(--txt-primary-clr)"
               filter="var(--filter-drop)"
             />
             {#if link.subLinksCollection.items.length > 0}
@@ -112,7 +112,7 @@
 
   nav li {
     position: relative;
-    font-size: var(--fs-lg);
+    font-size: var(--fs-md);
     text-transform: lowercase;
     padding: 0.5rem 1rem;
   }
@@ -126,6 +126,26 @@
 
   .more-button {
     position: relative;
+  }
+
+  .more-button button {
+    width: 5rem;
+    background: none;
+    font-size: var(--fs-md);
+    border: none;
+    padding: 0;
+    color: var(--txt-primary-clr);
+  }
+
+  .btn-icon {
+    display: flex;
+    flex-wrap: nowrap;
+    fill: #ffe5d9;
+  }
+
+  :global(.more-button svg) {
+    height: 0.7em;
+    stroke: currentColor;
   }
 
   .more-dropdown {

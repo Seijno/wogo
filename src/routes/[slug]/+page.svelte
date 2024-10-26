@@ -4,7 +4,7 @@
 
   const componentMap = {
     home: HomePage,
-    'walks-overview': TicketsOverview,
+    'tour-overview': TicketsOverview,
     'work-with-us': WorkWithUs,
     'group-outings': GroupOutings,
   }
