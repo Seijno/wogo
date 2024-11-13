@@ -1,7 +1,26 @@
 <script>
+  import { onMount } from 'svelte'
   import { Link, CartIcon, ArrowDown, Button } from '$lib/index'
   import logo from '$lib/assets/logo.webp'
   export let navigation
+
+  // custom js
+  onMount(() => {
+    const mediaQuery = window.matchMedia('(max-width: 65rem)')
+    const hider = document.querySelector('.mobileHide')
+
+    function updateMenu() {
+      if (mediaQuery.matches) {
+        hider.style.display = 'none'
+      } else {
+        hider.style.display = 'block'
+      }
+    }
+
+    updateMenu()
+
+    mediaQuery.addEventListener('change', updateMenu)
+  })
 </script>
 
 <header>
@@ -20,7 +39,7 @@
     ><span></span></button
   >
   <nav>
-    <ul>
+    <ul class="mobileHide">
       {#each navigation.navigationLinksCollection.items as link}
         {#if link.title === 'More'}
           <li class="more-button">
@@ -66,6 +85,56 @@
       {/each}
     </ul>
   </nav>
+  <section id="mobileMenu">
+    <button type="button" id="mobileMenuClose" aria-label="close-menu-button"><span></span></button>
+    <nav>
+      <ul>
+        {#each navigation.navigationLinksCollection.items as link}
+          {#if link.title === 'More'}
+            <li class="more-button">
+              <button class="">
+                <span class="btn-icon">
+                  More
+                  <ArrowDown />
+                </span>
+              </button>
+              <ul class="more-dropdown">
+                {#each link.subLinksCollection.items as sublink}
+                  <li>
+                    <Link href={sublink.slug} title={sublink.title} aria-label={sublink.label} />
+                  </li>
+                {/each}
+              </ul>
+            </li>
+          {:else}
+            <li>
+              <Link
+                href={link.slug}
+                title={link.title}
+                arialabel={link.label}
+                color="var(--txt-primary-clr)"
+                filter="var(--filter-drop)"
+              />
+              {#if link.subLinksCollection.items.length > 0}
+                <ul class="sub-menu" aria-label="Submenu">
+                  {#each link.subLinksCollection.items as sublink}
+                    <li>
+                      <Link
+                        href={sublink.slug}
+                        title={sublink.title}
+                        aria-label={sublink.label}
+                        color="var(--txt-dark-clr)"
+                      />
+                    </li>
+                  {/each}
+                </ul>
+              {/if}
+            </li>
+          {/if}
+        {/each}
+      </ul>
+    </nav>
+  </section>
   <div class="button-cart-container">
     <CartIcon width="60px" height="60px" fill="var(--accent2-primary)" />
   </div>
@@ -100,6 +169,7 @@
     z-index: 900;
   }
 
+  #mobileMenu,
   #mainMenuOpen {
     display: none;
   }
@@ -202,15 +272,41 @@
     gap: 2rem;
   }
 
-  @media (max-width: 65em) {
+  @media (max-width: 65rem) {
+    .mobileHide {
+      display: block;
+    }
     header {
       justify-content: 0;
+    }
+
+    #mobileMenu {
+      display: none;
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      left: 0;
+      top: 00vh;
+      background: var(--page-bg-color);
+      transition: 0.5s;
+      z-index: 999;
+    }
+
+    #mobileMenu nav {
+      margin-top: 20%;
+    }
+    #mobileMenu nav li {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      width: 6rem;
+      padding-top: 2rem;
     }
 
     #mainMenuOpen {
       display: block;
       width: 40px;
-      height: 3px;
+      height: 30px;
       flex-grow: 0;
       border: 0;
       background: transparent;
@@ -228,6 +324,7 @@
       height: 3px;
       background: var(--accent2-primary);
       border-radius: var(--radius-lg);
+      z-index: 998;
     }
     #mainMenuOpen span::before {
       margin-top: -12px;
@@ -241,47 +338,36 @@
       top: -8px;
     }
 
-    #mainMenuOpen + nav {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      background: var(--page-bg-color);
-      transition:
-        top 2s 0.5s,
-        opacity 0.5s;
-    }
-    #mainMenuOpen:focus + nav,
-    #mainMenuOpen + nav:focus-within {
-      left: 0;
-      opacity: 1;
-      transition:
-        top 0s,
-        opacity 0.5s;
-    }
-
-    #mainMenuOpen + nav li {
-      display: flex;
-      flex-direction: column;
-      font-size: var(--fs-xl);
-      padding: 1rem 0 1rem 0;
-    }
-
-    #mainMenuOpen + nav > ul:after {
-      content: '\2715';
-      color: var(--txt-primary-clr);
+    #mobileMenuClose {
       display: block;
       position: absolute;
-      top: 1.5rem;
-      right: 1.2rem;
-      font-size: 2.5rem;
+      width: 40px;
+      height: 35px;
+      flex-grow: 0;
+      border: 0;
+      background: transparent;
       cursor: pointer;
+      order: 4;
+      right: 2rem;
+      top: 2rem;
+    }
+    #mobileMenuClose span,
+    #mobileMenuClose span::after {
+      display: block;
+      position: absolute;
+      content: '';
+      width: 40px;
+      height: 3px;
+      background: var(--accent2-primary);
+      border-radius: var(--radius-lg);
+    }
+
+    #mobileMenuClose span {
+      rotate: 45deg;
+    }
+
+    #mobileMenuClose span::after {
+      rotate: 90deg;
     }
 
     div {
