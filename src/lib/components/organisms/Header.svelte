@@ -6,6 +6,7 @@
 
   // custom js
   onMount(() => {
+    // toggle mobile menu & desktop menu
     const mediaQuery = window.matchMedia('(max-width: 65rem)')
     const hider = document.querySelector('.mobileHide')
 
@@ -18,8 +19,20 @@
     }
 
     updateMenu()
-
     mediaQuery.addEventListener('change', updateMenu)
+
+    // open & closing mobile menu
+    const closeMenuBtn = document.getElementById('mobileMenuClose')
+    const openMenuBtn = document.getElementById('mainMenuOpen')
+    const mobileMenu = document.getElementById('mobileMenu')
+
+    openMenuBtn.addEventListener('click', function () {
+      mobileMenu.style.top = '0'
+    })
+
+    closeMenuBtn.addEventListener('click', function () {
+      mobileMenu.style.top = '-100vh'
+    })
   })
 </script>
 
@@ -281,14 +294,14 @@
     }
 
     #mobileMenu {
-      display: none;
+      display: block;
       position: absolute;
       height: 100vh;
       width: 100vw;
       left: 0;
-      top: 00vh;
+      top: -100vh;
       background: var(--page-bg-color);
-      transition: 0.5s;
+      transition: 0.5s ease;
       z-index: 999;
     }
 
