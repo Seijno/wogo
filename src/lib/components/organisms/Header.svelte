@@ -6,15 +6,20 @@
 
   // custom js
   onMount(() => {
+    const mediaQuery = window.matchMedia('(max-width: 65rem)'),
+      mobileMenu = document.querySelector('.mobileMenu'),
+      hider = document.querySelector('.mobileHide'),
+      openMenuBtn = document.getElementById('mainMenuOpen'),
+      closeMenuBtn = document.getElementById('mobileMenuClose')
     // toggle mobile menu & desktop menu
-    const mediaQuery = window.matchMedia('(max-width: 65rem)')
-    const hider = document.querySelector('.mobileHide')
 
     function updateMenu() {
       if (mediaQuery.matches) {
         hider.style.display = 'none'
+        openMenuBtn.style.display = 'block'
       } else {
         hider.style.display = 'block'
+        openMenuBtn.style.display = 'none'
       }
     }
 
@@ -22,17 +27,18 @@
     mediaQuery.addEventListener('change', updateMenu)
 
     // open & closing mobile menu
-    const closeMenuBtn = document.getElementById('mobileMenuClose')
-    const openMenuBtn = document.getElementById('mainMenuOpen')
-    const mobileMenu = document.getElementById('mobileMenu')
+    openMenuBtn.addEventListener('click', showing)
 
-    openMenuBtn.addEventListener('click', function () {
-      mobileMenu.style.top = '0'
-    })
+    function showing() {
+      mobileMenu.classList.remove('hiding')
+      mobileMenu.classList.add('showing')
+    }
 
-    closeMenuBtn.addEventListener('click', function () {
-      mobileMenu.style.top = '-100vh'
-    })
+    closeMenuBtn.addEventListener('click', hiding)
+    function hiding() {
+      mobileMenu.classList.remove('showing')
+      mobileMenu.classList.add('hiding')
+    }
   })
 </script>
 
@@ -48,15 +54,13 @@
     />
   </span>
   <img src={logo} height="70" width="70" alt="Wogo Logo" />
-  <button type="button" id="mainMenuOpen" tabindex="-1" aria-label="hamburger-button"
-    ><span></span></button
-  >
+  <button type="button" id="mainMenuOpen" aria-label="hamburger-button"><span></span></button>
   <nav>
     <ul class="mobileHide">
       {#each navigation.navigationLinksCollection.items as link}
         {#if link.title === 'More'}
           <li class="more-button">
-            <button class="">
+            <button>
               <span class="btn-icon">
                 More
                 <ArrowDown />
@@ -98,8 +102,7 @@
       {/each}
     </ul>
   </nav>
-  <section id="mobileMenu">
-    <button type="button" id="mobileMenuClose" aria-label="close-menu-button"><span></span></button>
+  <section class="mobileMenu">
     <nav>
       <ul>
         {#each navigation.navigationLinksCollection.items as link}
@@ -147,6 +150,7 @@
         {/each}
       </ul>
     </nav>
+    <button type="button" id="mobileMenuClose" aria-label="close-menu-button"><span></span></button>
   </section>
   <div class="button-cart-container">
     <CartIcon width="60px" height="60px" fill="var(--accent2-primary)" />
@@ -182,8 +186,7 @@
     z-index: 900;
   }
 
-  #mobileMenu,
-  #mainMenuOpen {
+  :global(.mobileMenu, #mainMenuOpen) {
     display: none;
   }
 
@@ -293,22 +296,22 @@
       justify-content: 0;
     }
 
-    #mobileMenu {
-      display: block;
+    :global(.mobileMenu) {
+      display: none;
       position: absolute;
       height: 100vh;
       width: 100vw;
       left: 0;
       top: -100vh;
       background: var(--page-bg-color);
-      transition: 0.5s ease;
       z-index: 999;
+      /* animation: shower 2sec forwards; */
     }
 
-    #mobileMenu nav {
+    .mobileMenu nav {
       margin-top: 20%;
     }
-    #mobileMenu nav li {
+    .mobileMenu nav li {
       display: flex;
       flex-direction: column;
       margin: 0 auto;
@@ -317,7 +320,7 @@
     }
 
     #mainMenuOpen {
-      display: block;
+      display: none;
       width: 40px;
       height: 30px;
       flex-grow: 0;
@@ -325,6 +328,32 @@
       background: transparent;
       cursor: pointer;
       order: 4;
+    }
+
+    :global(.showing) {
+      animation: shower 1s forwards;
+      display: block;
+    }
+    @keyframes shower {
+      0% {
+        transform: translateY(0vh);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+    :global(.hiding) {
+      animation: hider 1s forwards;
+    }
+    @keyframes hider {
+      0% {
+        display: block;
+        transform: translateY(100vh);
+      }
+      100% {
+        display: none;
+        transform: translateY(0vh);
+      }
     }
 
     #mainMenuOpen span,
