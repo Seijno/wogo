@@ -11,8 +11,8 @@
       hider = document.querySelector('.mobileHide'),
       openMenuBtn = document.getElementById('mainMenuOpen'),
       closeMenuBtn = document.getElementById('mobileMenuClose')
-    // toggle mobile menu & desktop menu
 
+    // toggle mobile menu & desktop menu
     function updateMenu() {
       if (mediaQuery.matches) {
         hider.style.display = 'none'
@@ -290,12 +290,13 @@
 
   @media (max-width: 65rem) {
     .mobileHide {
-      display: block;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
     header {
       justify-content: 0;
     }
-
     :global(.mobileMenu) {
       display: none;
       position: absolute;
@@ -305,7 +306,6 @@
       top: -100vh;
       background: var(--page-bg-color);
       z-index: 999;
-      /* animation: shower 2sec forwards; */
     }
 
     .mobileMenu nav {
@@ -328,32 +328,6 @@
       background: transparent;
       cursor: pointer;
       order: 4;
-    }
-
-    :global(.showing) {
-      animation: shower 1s forwards;
-      display: block;
-    }
-    @keyframes shower {
-      0% {
-        transform: translateY(0vh);
-      }
-      100% {
-        transform: translateY(100vh);
-      }
-    }
-    :global(.hiding) {
-      animation: hider 1s forwards;
-    }
-    @keyframes hider {
-      0% {
-        display: block;
-        transform: translateY(100vh);
-      }
-      100% {
-        display: none;
-        transform: translateY(0vh);
-      }
     }
 
     #mainMenuOpen span,
@@ -412,12 +386,52 @@
       rotate: 90deg;
     }
 
+    .button-cart-container {
+      display: flex;
+      margin: 0 auto;
+    }
+
     div {
       display: flex;
       align-items: center;
       gap: 1rem;
       position: relative;
       top: 5px;
+    }
+    :global(.showing) {
+      top: 0vh;
+      display: block;
+    }
+    :global(.hiding) {
+      display: none;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      :global(.showing) {
+        animation: shower 1s forwards;
+        top: -100vh;
+        display: block;
+      }
+      @keyframes shower {
+        0% {
+          transform: translateY(0vh);
+        }
+        100% {
+          transform: translateY(100vh);
+        }
+      }
+      :global(.hiding) {
+        animation: hider 1s forwards;
+      }
+      @keyframes hider {
+        0% {
+          display: block;
+          transform: translateY(100vh);
+        }
+        100% {
+          display: none;
+          transform: translateY(0vh);
+        }
+      }
     }
   }
 </style>
