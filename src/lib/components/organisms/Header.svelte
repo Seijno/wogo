@@ -315,8 +315,9 @@
       display: flex;
       flex-direction: column;
       margin: 0 auto;
-      width: 6rem;
+      width: 40vw;
       padding-top: 2rem;
+      font-size: 2rem;
     }
 
     #mainMenuOpen {
@@ -432,6 +433,11 @@
           transform: translateY(0vh);
         }
       }
+    }
+  }
+  @media (max-width: 35rem) {
+    .mobileMenu nav li {
+      font-size: 1.5rem;
     }
   }
 </style>
