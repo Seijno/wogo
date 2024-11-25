@@ -8,12 +8,13 @@
   export let iconColor = ''
   export let filter = ''
   export let fontSize = ''
+  export let decoration = ''
 </script>
 
 <a
   data-sveltekit-reload
   {href}
-  style="--clr: {color}; --font-size: {fontSize}; --filter: {filter};"
+  style="--clr: {color}; --font-size: {fontSize}; --filter: {filter}; --decoration: {decoration};"
   {...$$restProps}
 >
   {title}
@@ -27,14 +28,17 @@
 
 <style>
   a {
-    display: flex;
+    display: flex;   
+    line-height: 1.5em; 
     align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
+    text-decoration: none;    
     color: var(--clr);
     font-size: var(--font-size);
     white-space: nowrap;
     filter: var(--filter);
+    text-transform: none;
+    text-decoration: var(--decoration);
+    font-weight: 300;
   }
 
   span {
