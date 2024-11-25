@@ -30,7 +30,10 @@ Welkom bij de WOGO Website, een website gebouwd met SvelteKit en Contentful. WOG
 
 ## Live pagina
 
-Bekijk de live pagina hier 
+Bekijk de live pagina [hier](wogohva.netlify.app/home)
+
+<img src="https://github.com/user-attachments/assets/85259dab-f723-4358-a147-0b0d545b0bff" width=800 height=400>
+
 
 ## Gebruikersaanwijzing
 ### Navigeren door de pagina
