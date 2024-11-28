@@ -1,29 +1,25 @@
 <script>
-  import { Link, Image, Button, ArrowRight } from '$lib/index'
+  import { Link, CocktailIcon, Button, ArrowRight } from '$lib/index'
   import logo from '$lib/assets/logo.webp'
+  import nix from '$lib/assets/nix-18.webp'
   export let footerItems
 </script>
 
 <footer>
   <!-- LOGO -->
-  <img src={logo} height="50" width="50" alt="Ga naar home" />
+  <img src={logo} height="50" width="50" alt="onder navigatie" />
 
   <section>
     <!-- NIEUWSBRIEF -->
+    <!-- form veranderen met molecule van patrick -->
     <form>
       <legend>{footerItems[0].newsletterTitle}</legend>
       <p>{footerItems[0].newsLetterDescription}</p>
 
       <label>
-        Email* <!-- wordt nog dynamisch -->
-
-        <!-- dit nog een component makene (molecule)-->
-        <input
-          type="email"
-          name="email"
-          placeholder={footerItems[0].placeholderText}
-          required
-        />
+        Email*
+        <!-- input veranderen met atom van patrick -->
+        <input type="email" name="email" placeholder={footerItems[0].placeholderText} required />
       </label>
       <Button
         type="submit"
@@ -33,76 +29,116 @@
         iconColor="var(--btn-primary-text-clr)"
         size="sm"
       />
-      <!-- dit nog een component makene (molecule)-->
     </form>
 
     <!-- Navigatie -->
     <nav>
       <ul>
-        <h4>Navigatie</h4> <!-- moet later dynamische content zijn in contentful -->
+        <h4>Navigatie</h4>
+        <!-- moet later dynamische content zijn in contentful -->
         {#each footerItems[0].footerLinksCollection.items as item}
           <li>
-            <Link href={item.slug} aria-label={item.title} title={item.title} 
-            fontSize='1rem' 
-            color='var(--txt-primary-clr)' 
-            decoration='underline'></Link>
+            <Link
+              href={item.slug}
+              aria-label={item.title}
+              title={item.title}
+              fontSize="1rem"
+              color="var(--txt-primary-clr)"
+              decoration="underline"
+            ></Link>
           </li>
         {/each}
       </ul>
 
       <ul>
-        <h4>Bronnen</h4> <!-- moet later dynamische content zijn in contentful -->
-        {#each footerItems[0].footerLinksCollection.items as item} <!-- moet later andere links zijn -->
+        <h4>Bronnen</h4>
+        <!-- moet later dynamische content zijn in contentful -->
+        {#each footerItems[0].footerLinksCollection.items as item}
+          <!-- moet later andere links zijn -->
           <li>
-            <Link href={item.slug} aria-label={item.title} title={item.title} 
-            fontSize='1rem' 
-            color='var(--txt-primary-clr)' 
-            decoration='underline'></Link>
+            <Link
+              href={item.slug}
+              aria-label={item.title}
+              title={item.title}
+              fontSize="1rem"
+              color="var(--txt-primary-clr)"
+              decoration="underline"
+            ></Link>
           </li>
         {/each}
       </ul>
 
       <ul>
-        <h4>Social</h4><!-- moet later dynamische content zijn in contentful -->
+        <h4>Social</h4>
+        <!-- moet later dynamische content zijn in contentful -->
         {#each footerItems[0].socialMediaIconsCollection.items as item}
           <li>
-            <Link href={item.url} 
-            fontSize='1rem' 
-            color='var(--txt-primary-clr)' 
-            decoration='underline'>
+            <Link
+              href={item.url}
+              fontSize="1rem"
+              aria-label={item.title}
+              color="var(--txt-primary-clr)"
+              decoration="underline"
+            >
               {item.assetCollection.items[0].title}
             </Link>
           </li>
         {/each}
       </ul>
 
-      <ul>
-        <h4>Review ons</h4><!-- moet later dynamische content zijn in contentful -->
-        <a href="https://www.tripadvisor.nl/Attraction_Review-g188590-d25182767-Reviews-Cocktail_Walk-Amsterdam_North_Holland_Province.html">
-          Tripadvisor
-        </a>
-        <a href="https://uk.trustpilot.com/review/wogoamsterdam.com?utm_medium=trustbox&utm_source=TrustBoxReviewCollector">
-          Trustpilot
-        </a>
+      <ul class="review">
+        <h4>Review ons</h4>
         <!-- moet later dynamische content zijn in contentful -->
+        <li>
+          <form
+            aria-label="review ons op Tripadvisor"
+            class="feedback"
+            action="https://www.tripadvisor.nl/Attraction_Review-g188590-d25182767-Reviews-Cocktail_Walk-Amsterdam_North_Holland_Province.html"
+          >
+            <!-- mogelijk nog een ander icon op de deze knoppen -->
+            <Button
+              type="submit"
+              variant="primary"
+              title="Tripadvisor"
+              icon={CocktailIcon}
+              iconColor="var(--btn-primary-text-clr)"
+              size="sm"
+            />
+          </form>
+        </li>
+        <li>
+          <form
+            class="feedback"
+            aria-label="review ons op Trustpilot"
+            action="https://uk.trustpilot.com/review/wogoamsterdam.com?utm_medium=trustbox&utm_source=TrustBoxReviewCollector"
+          >
+            <Button
+              type="submit"
+              variant="primary"
+              title="Trustpilot"
+              icon={CocktailIcon}
+              iconColor="var(--btn-primary-text-clr)"
+              size="sm"
+            />
+          </form>
+        </li>
       </ul>
     </nav>
   </section>
-  
 
-  <hr>
+  <div class="line"></div>
 
   <!-- COPYRIGHT -->
   <div>
-    <!-- moet later dynamische content zijn in contentful -->
+    <!-- jaartal moet later dynamische content zijn in contentful -->
     <p><small>© 2024 WOGO Amsterdam. Alle rechten voorbehouden.</small></p>
-    <img src="/2a3b9e_c62852e7512143168afec041916d1f9d~mv2.png.webp" height="26" width="100"  alt="nix 18"> 
+    <img src={nix} height="30" width="90" alt="nix 18 is niet voor niks" />
   </div>
 </footer>
 
 <style>
-  /* Mobile  */
-  legend,h4 {
+  legend,
+  h4 {
     font-family: 'LuloClean', sans-serif;
   }
   footer {
@@ -117,17 +153,24 @@
   h4 {
     font-size: 1em;
     line-height: 2em;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
   legend {
     font-size: 1.7em;
   }
   form {
     display: grid;
-    /* flex-direction: column; */
     gap: 1em;
-  }
+    width: 100%;
 
+    @media screen and (min-width: 48em) {
+      width: 30rem;
+    }
+  }
+  .feedback {
+    margin-top: 1rem;
+    width: 100%;
+  }
   input:where([type='email']) {
     display: block;
     margin: 1rem 0;
@@ -148,54 +191,43 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2em 5em;
-    justify-content: space-between;
+    justify-content: space-evenly;
+
+    @media screen and (min-width: 48em) {
+      flex-wrap: nowrap;
+    }
   }
 
   section {
     display: flex;
     flex-direction: column;
     gap: 2em;
+
+    @media screen and (min-width: 48em) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5em;
+      width: 100%;
+    }
   }
 
   ul {
     list-style: none;
   }
 
-  ul li a {
-    background-color: var(--accent1-tertiary);
-  }
-
   div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
   }
 
-  hr {
-    height: .5px;
+  .line {
+    width: 90%;
+    margin: 0 auto;
+    height: 0.5px;
     border: 0;
     background-color: var(--accent2-quaternary);
-  }
-
-
-  /* Desktop */
-  @media screen and (min-width: 48em) {
-    nav {
-      flex-wrap: nowrap;
-    }
-
-    form {
-      min-width: 20em;
-      width: 30em;
-    }
-
-    section {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 5em;
-      width: 100%;
-    }
   }
 </style>
