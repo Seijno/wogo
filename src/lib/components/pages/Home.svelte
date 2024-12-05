@@ -9,17 +9,8 @@
     GiftCard,
     Bubbles,
   } from '$lib/index'
-  import { onMount } from 'svelte'
   export let items
   export let itemCollection
-
-  onMount(() => {
-    const bubbles = document.querySelectorAll('.bubble')
-
-    bubbles.forEach((bubble, index) => {
-      bubble.style.setProperty('--i', index + 1)
-    })
-  })
 </script>
 
 <svelte:head>
