@@ -32,6 +32,7 @@
 	"dependencies": {
 		"contentful": "^10.8.4",
 		"graphql-request": "^6.1.0",
+		"three": "^0.171.0",
 		"wogo": "file:"
 	}
 }
