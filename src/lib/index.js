@@ -24,6 +24,7 @@ export { default as Translation } from '$lib/components/molecules/Translation.sv
 export { default as LargeText } from '$lib/components/molecules/LargeText.svelte'
 export { default as TicketDetails } from '$lib/components/molecules/TicketDetails.svelte'
 export { default as HeaderContent } from '$lib/components/molecules/HeaderContent.svelte'
+export { default as Bubbles } from '$lib/components/molecules/Bubbles.svelte'
 
 // Organisms
 export { default as Hero } from '$lib/components/organisms/Hero.svelte'
