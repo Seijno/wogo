@@ -27,6 +27,7 @@ export { default as HeaderContent } from '$lib/components/molecules/HeaderConten
 
 // Organisms
 export { default as Hero } from '$lib/components/organisms/Hero.svelte'
+export { default as CreativeSpike } from '$lib/components/organisms/Hero.svelte'
 export { default as RotterdamTicketHero } from '$lib/components/organisms/RotterdamTicketHero.svelte'
 export { default as TicketCarousel } from '$lib/components/organisms/TicketCarousel.svelte'
 export { default as WhatWeDo } from '$lib/components/organisms/WhatWeDo.svelte'

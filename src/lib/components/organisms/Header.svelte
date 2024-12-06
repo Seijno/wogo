@@ -89,7 +89,7 @@
   header {
     display: flex;
     position: sticky;
-    background-color: #221714;
+    background-color: #000;
     top: 0;
     right: 0;
     left: 0;
@@ -133,7 +133,7 @@
     position: absolute;
     top: 150%;
     left: 0;
-    background-color: var(--accent2-tertiary);
+    background-color: #000;
     border-radius: var(--radius-md);
     overflow: hidden;
     opacity: 0;
@@ -162,7 +162,7 @@
     right: 1rem;
     padding: 1rem 0;
     opacity: 0;
-    background-color: var(--page-bg-color);
+    background-color: #000;
   }
 
   li:focus-within > .sub-menu {
