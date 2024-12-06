@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  export let items
+  export let items;
 
   let enableBubbles = false;
   let curX = 0, curY = 0, tgX = 0, tgY = 0;
@@ -56,13 +56,12 @@
   </div>
   <div class="hero-content">
     <h1>
-      {items[0].title}
+      {items[0]?.title}
     </h1>
   </div>
 </section>
 
 <style>
-
   section {
     display: grid;
     place-items: center;
@@ -78,17 +77,17 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(
-      130deg,
-      rgba(2, 0, 36, 0.8),
-      rgba(9, 121, 242, 0.8),
-      rgba(0, 212, 255, 0.8),
-      rgba(255, 0, 255, 0.8),
-      rgba(255, 255, 0, 0.8),
-      rgba(0, 245, 212, 0.8)
+      135deg, 
+      rgba(255, 0, 255, 0.9), 
+      rgba(0, 255, 255, 0.8), 
+      rgba(0, 255, 0, 0.7),
+      rgba(255, 255, 0, 0.6), 
+      rgba(255, 105, 180, 0.7), 
+      rgba(0, 0, 255, 0.8)
     );
     background-size: 400% 400%;
-    animation: futuristic-animation 5s linear infinite;
-    filter: brightness(1.1) contrast(1.2) saturate(1.3);
+    animation: holographic-animation 12s linear infinite; /* Increased duration for slower movement */
+    filter: brightness(1.3) contrast(1.5) saturate(1.8);
     z-index: -1;
   }
 
@@ -158,6 +157,18 @@
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 0, 255, 0.6);
     position: relative;
     animation: content 3s forwards;
+  }
+
+  @keyframes holographic-animation {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
   }
 
   @keyframes heading {
