@@ -7,6 +7,8 @@
 <div class="main-layout">
   <RetroBackground />
 
+  <div class="transition-overlay"></div>
+
   <section class="header">
     <h1>Tickets</h1>
     <Filter {cities} />
