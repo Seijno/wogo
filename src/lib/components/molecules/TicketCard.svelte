@@ -4,117 +4,120 @@
   const items = itemCollection.componentsCollection.items
 </script>
 
-{#each items as item}
-  <article class="ticket-card">
-    <div>
-      <h3>{item.title}</h3>
-      <Image
-        src={item.image.url}
-        alt={item.image.title}
-        brdRadius="var(--radius-lg)"
-        opacity="0.6"
-        loading="lazy"
-      />
-      <p>{item.price}</p>
-    </div>
-
-    <div>
-      <p>
-        <span><RouteIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
-        {item.location}
-      </p>
-
-      <p>
-        <span><CocktailIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
-        {item.cocktailDescription}
-      </p>
-
-      <div>
-        <Button type="button" variant="primary" title="Book Now" size="m" />
-        <Button href="/home/{item.slug}" variant="secondary" title="Read More" size="m" />
+<div class="ticket-container">
+  {#each items as item}
+    <article class="ticket-card">
+      <div class="card-header">
+        <h3>{item.title}</h3>
+        <Image
+          src={item.image.url}
+          alt={item.image.title}
+          brdRadius="var(--radius-lg)"
+          opacity="0.6"
+          loading="lazy"
+        />
       </div>
-    </div>
-  </article>
-{/each}
+
+      <div class="card-body">
+        <p>
+          <span><RouteIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
+          {item.location}
+        </p>
+
+        <p>
+          <span><CocktailIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
+          {item.cocktailDescription}
+        </p>
+
+        <div class="button-group">
+          <Button type="button" variant="primary" title="Book Now" size="m" />
+          <Button href="/home/{item.slug}" variant="secondary" title="Read More" size="m" />
+        </div>
+      </div>
+    </article>
+  {/each}
+</div>
 
 <style>
+  .ticket-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
   article {
-    min-width: 320px;
-    height: 400px;
-    border-radius: var(--radius-lg);
-    background-color: var(--accent2-quaternary);
-    scroll-snap-align: start;
-    scroll-snap-align: center;
-  }
-
-  div:nth-of-type(1) {
-    position: relative;
-    background: linear-gradient(137deg, rgba(206, 101, 56, 1) 0%, rgba(32, 22, 17, 1) 0%);
-  }
-
-  div:nth-of-type(2) {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1em;
-  }
-
-  h3 {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0.5rem 0.4rem;
-    font-size: var(--fs-md);
-    line-height: 1em;
-    color: var(--txt-quaternary-clr);
-    z-index: 1;
-  }
-
-  div:first-of-type p {
-    position: absolute;
-    left: 1em;
-    top: 1em;
-    padding: 0.5rem;
-    font-weight: 600;
+    justify-content: space-between;
+    background-color: var(--accent2-quaternary);
     border-radius: var(--radius-lg);
-    color: var(--btn-primary-text-clr);
-    background-color: var(--btn-secondary-bg);
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  p {
+
+  .card-header {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-header h3 {
+    margin: 0;
+    padding: 0.5rem;
+    font-size: var(--fs-md);
+    line-height: 1.2em;
+    color: var(--txt-quaternary-clr);
+    text-shadow: 1px 1px var(--btn-secondary-bg);
+  }
+
+  .card-header p {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0.3rem 0.6rem;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-primary-text-clr);
+    border-radius: var(--radius-lg);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .card-body p {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    font-size: var(--fs-md);
+    gap: 0.5rem;
+    font-size: var(--fs-sm);
     color: var(--txt-dark-clr);
   }
 
-  div:nth-of-type(2) > div {
+  .button-group {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    background: none;
-    gap: 0.2em;
-    padding: 0.9rem 0;
+    gap: 0.5rem;
   }
 
   @media screen and (min-width: 48em) {
+    .ticket-container {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
     article {
-      min-width: 500px;
-      height: 550px;
+      padding: 1.5rem;
     }
 
-    div:nth-of-type(2) {
-      padding: 1em 2em;
-    }
-
-    h3 {
-      font-size: var(--fs-xl);
-    }
-
-    p {
+    .card-header h3 {
       font-size: var(--fs-lg);
+    }
+
+    .card-body p {
+      font-size: var(--fs-md);
     }
   }
 </style>
