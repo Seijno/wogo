@@ -23,7 +23,10 @@
         url.searchParams.delete('locatie')
       }
 
-      window.location = url
+      document.querySelector('section').classList.add('fade-out')
+      setTimeout(() => {
+        window.location = url
+      }, 500) // Match the transition duration
     }
   }
 </script>
@@ -49,6 +52,16 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity 0.5s ease-in-out,
+      transform 0.5s ease-in-out;
+  }
+
+  section.fade-out {
+    opacity: 0;
+    transform: scale(0.55);
   }
 
   form {
@@ -72,8 +85,8 @@
     text-transform: uppercase;
     border-radius: 0.8rem;
     transition:
-      background-color 0.3s ease-in-out,
-      color 0.3s ease-in-out;
+      background-color 1.3s ease-in-out,
+      color 1.3s ease-in-out;
   }
 
   form select:focus {
