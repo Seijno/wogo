@@ -36,12 +36,10 @@
 
         <div class="button-group">
           <Button type="button" variant="primary" title="Book Now" size="m" />
-          <Button href="/home/{item.slug}" variant="secondary" title="Read More" size="m" />
         </div>
       </div>
     </article>
 
-    <!-- Fullscreen Modal -->
     <div id="view-{item.title}" class="image-modal">
       <div class="modal-content">
         <div class="retro-lines">
