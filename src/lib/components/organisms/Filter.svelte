@@ -10,33 +10,35 @@
     filter = urlSearchParams.getAll('locatie') || []
   })
 
-  function applyFilter(event) {
-    event.preventDefault()
-    const formData = new FormData(event.target)
-    const locatie = formData.get('locatie')
-    const url = new URL(window.location)
+  function applyFilter() {
+    return function (event) {
+      event.preventDefault()
+      const formData = new FormData(event.target)
+      const locatie = formData.get('locatie')
+      const url = new URL(window.location)
 
-    if (locatie) {
-      url.searchParams.set('locatie', locatie)
-    } else {
-      url.searchParams.delete('locatie')
+      if (locatie) {
+        url.searchParams.set('locatie', locatie)
+      } else {
+        url.searchParams.delete('locatie')
+      }
+
+      window.location = url
     }
-
-    window.location.href = url
   }
 </script>
 
 <section>
-  <form on:submit={applyFilter}>
+  <form on:submit={applyFilter()}>
     <select name="locatie" id="locatie-select" tabindex="0">
-      <option value="" selected={!filter.length}>All Locations</option>
+      <option value="" selected={!filter}>Alle locaties</option>
       {#each cities as city}
-        <option value={city} selected={filter.includes(city)}>
+        <option value={city} selected={filter === city}>
           {city}
         </option>
       {/each}
     </select>
-    <button type="submit" class="retro-button">Apply Filter</button>
+    <button type="submit">Pas filter toe</button>
   </form>
 </section>
 
@@ -52,34 +54,44 @@
   form {
     display: flex;
     gap: 1rem;
+    transition: all 0.3s ease-in-out;
   }
 
-  select {
+  form:has(select:focus) {
+    transform: scale(1.02);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  form select {
     padding: 0.5rem;
     border: none;
-    background-color: #444;
-    color: #fff;
+    background-color: var(--accent2-primary);
+    color: var(--accent1-primary);
     text-transform: uppercase;
     border-radius: 0.8rem;
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+  }
+
+  form select:focus {
+    background-color: var(--accent1-primary);
+    color: var(--accent2-primary);
   }
 
   button {
     padding: 0.5rem 1rem;
-    background-color: #fff;
-    color: #444;
+    background-color: var(--accent1-primary);
+    color: var(--accent2-primary);
     border: none;
     border-radius: 0.8rem;
-    font-weight: bold;
     text-transform: uppercase;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
   }
 
   button:hover {
     transform: scale(1.05);
-  }
-
-  button:active {
-    transform: scale(0.95);
   }
 </style>

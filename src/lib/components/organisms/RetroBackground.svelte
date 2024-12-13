@@ -1,15 +1,31 @@
 <script>
+  import { onMount } from 'svelte'
+
   let scrollY = 0
 
-  // Listen to the scroll event to update the scrollY value.
-  window.addEventListener('scroll', () => {
-    scrollY = window.scrollY
+  onMount(() => {
+    // Check if the DOM is available before adding listeners
     const vertical = document.querySelector('.retro-path-vertical')
     const horizontal = document.querySelector('.retro-path-horizontal')
 
-    // Adjust the background position based on scrollY.
-    vertical.style.backgroundPosition = `0 ${-scrollY * 0.5}px`
-    horizontal.style.backgroundPosition = `${-scrollY * 0.3}px 0`
+    const handleScroll = () => {
+      scrollY = window.scrollY
+
+      // Adjust the background position based on scrollY
+      if (vertical) {
+        vertical.style.backgroundPosition = `0 ${-scrollY * 0.5}px`
+      }
+      if (horizontal) {
+        horizontal.style.backgroundPosition = `${-scrollY * 0.3}px 0`
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    // Clean up the event listener when the component is destroyed
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
   })
 </script>
 
@@ -44,13 +60,12 @@
     z-index: 0;
   }
 
-  /* Thicker and animated horizontal retro path */
   .retro-path-horizontal {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 300%;
-    height: 200px; /* Increased height for a thicker line */
+    height: 200px;
     background: repeating-linear-gradient(
       to right,
       hsl(45, 85%, 60%) 0%,
