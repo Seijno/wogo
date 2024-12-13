@@ -3,42 +3,40 @@
   import { onMount } from 'svelte'
 
   let filter = []
-  export let cities
+  export let cities = []
 
   onMount(() => {
     const urlSearchParams = new URLSearchParams($page.url.search)
     filter = urlSearchParams.getAll('locatie') || []
   })
 
-  function applyFilter() {
-    return function (event) {
-      event.preventDefault()
-      const formData = new FormData(event.target)
-      const locatie = formData.get('locatie')
-      const url = new URL(window.location)
+  function applyFilter(event) {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    const locatie = formData.get('locatie')
+    const url = new URL(window.location)
 
-      if (locatie) {
-        url.searchParams.set('locatie', locatie)
-      } else {
-        url.searchParams.delete('locatie')
-      }
-
-      window.location = url
+    if (locatie) {
+      url.searchParams.set('locatie', locatie)
+    } else {
+      url.searchParams.delete('locatie')
     }
+
+    window.location.href = url
   }
 </script>
 
 <section>
-  <form on:submit={applyFilter()}>
+  <form on:submit={applyFilter}>
     <select name="locatie" id="locatie-select" tabindex="0">
-      <option value="" selected={!filter}>Alle locaties</option>
+      <option value="" selected={!filter.length}>All Locations</option>
       {#each cities as city}
-        <option value={city} selected={filter === city}>
+        <option value={city} selected={filter.includes(city)}>
           {city}
         </option>
       {/each}
     </select>
-    <button type="submit">Pas filter toe</button>
+    <button type="submit" class="retro-button">Apply Filter</button>
   </form>
 </section>
 
@@ -56,24 +54,32 @@
     gap: 1rem;
   }
 
-  form select {
+  select {
     padding: 0.5rem;
     border: none;
-    background-color: var(--accent2-primary);
-    color: var(--accent1-primary);
+    background-color: #444;
+    color: #fff;
     text-transform: uppercase;
     border-radius: 0.8rem;
-  }
-
-  option {
   }
 
   button {
     padding: 0.5rem 1rem;
-    background-color: var(--accent1-primary);
-    color: var(--accent2-primary);
+    background-color: #fff;
+    color: #444;
     border: none;
     border-radius: 0.8rem;
+    font-weight: bold;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  button:active {
+    transform: scale(0.95);
   }
 </style>

@@ -27,7 +27,7 @@
     position: fixed;
     top: 0;
     right: 10%;
-    width: 500px;
+    width: 300px;
     height: 300%;
     background: repeating-linear-gradient(
       to bottom,
