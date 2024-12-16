@@ -1,6 +1,20 @@
 <script>
   import { Button, ArrowRight } from '$lib/index'
+
   export let items
+
+  let currentImageIndex = 0
+
+  // Import images using the updated path
+  import cocktail1 from '$lib/assets/cocktail1.png'
+  import cocktail2 from '$lib/assets/cocktail2.png'
+  import cocktail3 from '$lib/assets/cocktail3.png'
+
+  const images = [cocktail1, cocktail2, cocktail3]
+
+  function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length
+  }
 </script>
 
 <section>
@@ -15,12 +29,14 @@
           iconColor="#000000"
           size="lg"
         />
+        <Button variant="primary" title="Shake It" size="lg" on:click={nextImage} />
       </h1>
       <p>{items[0].subtitle}</p>
     </div>
     <div class="snow-ball">
       <div class="snow-globe">
         <div class="ball-container">
+          <img src={images[currentImageIndex]} alt="Cocktail" class="cocktail-image" />
           <div class="snowman">
             <div class="scarf"></div>
             <div class="hat"></div>
@@ -55,7 +71,7 @@
   .hero-wrapper {
     display: flex;
     align-items: flex-start;
-    gap: 2rem; /* Spacing between hero content and snowglobe */
+    gap: 2rem;
     max-width: 100%;
   }
 
@@ -469,6 +485,16 @@
       left: 10px;
     }
   }
+
+  .cocktail-image {
+    position: absolute;
+    width: 150px; /* Smaller image size */
+    height: auto;
+    object-fit: cover;
+    bottom: 6rem;
+    left: 5rem;
+  }
+
   @keyframes fall {
     0% {
       transform: translateY(-50px);
