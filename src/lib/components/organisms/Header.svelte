@@ -175,7 +175,7 @@
   header {
     display: flex;
     position: sticky;
-    background-color: #221714;
+    background-color: var(--cs-midnight-lagoon);
     top: 0;
     right: 0;
     left: 0;
