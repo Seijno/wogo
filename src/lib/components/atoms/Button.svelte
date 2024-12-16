@@ -57,10 +57,10 @@
 
   .btn-primary {
     border-radius: var(--btn-radius);
-    background-color: var(--btn-primary-bg);
+    background-color: var(--cs-sky-glacier);
     color: var(--btn-primary-text-clr);
     box-shadow: var(--btn-shadow);
-    border: 2px solid var(--btn-primary-bg);
+    border: 2px solid var(--cs-sky-glacier);
   }
 
   .btn-secondary {
