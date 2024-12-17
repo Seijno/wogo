@@ -1,6 +1,10 @@
 import { error } from '@sveltejs/kit'
 import contentfulFetch from '../api/contentful-fetch'
 
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const query = `
 {
@@ -56,23 +60,22 @@ const query = `
     }
   }
 }
-`;
+`
 
+export async function load() {
+  const response = await contentfulFetch(query)
 
-  export async function load() {
-    const response = await contentfulFetch(query)
-  
-    if (!response.ok) {
-      throw error(response.status, {
-        message: response.statusText,
-      })
-    }
-    const { data } = await response.json()
-    const { navigation } = data
-    const { items: footerItems } = data.footerCollection
-    
-    return {
-      navigation,
-      footer: footerItems
-    };
+  if (!response.ok) {
+    throw error(response.status, {
+      message: response.statusText,
+    })
   }
+  const { data } = await response.json()
+  const { navigation } = data
+  const { items: footerItems } = data.footerCollection
+
+  return {
+    navigation,
+    footer: footerItems,
+  }
+}

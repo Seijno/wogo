@@ -5,7 +5,6 @@
 
   let currentImageIndex = 0
 
-  // Import images using the updated path
   import cocktail1 from '$lib/assets/cocktail1.png'
   import cocktail2 from '$lib/assets/cocktail2.png'
   import cocktail3 from '$lib/assets/cocktail3.png'
