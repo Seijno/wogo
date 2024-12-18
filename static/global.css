@@ -153,3 +153,16 @@ h1, h2, h3, h4, h5, h6 {
     --btn-radius: 50em;
     --radius-full: 100vmax;
 }
+:root.darkmode{
+  --page-bg-color: hsl(0, 100%, 14%);
+  && .snowflake{
+    color: red;
+    transition: .5s;
+  }
+  && #krampus{
+    right: -13rem;
+  }
+  && #bell, #bell1, #bell2{
+    display: block;
+  }
+}
