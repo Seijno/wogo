@@ -45,10 +45,6 @@
         console.log(2)
       }
     }
-    function pianoSong() {
-      piano.play()
-      metal.pause()
-    }
     function noise() {
       bell.play()
     }
