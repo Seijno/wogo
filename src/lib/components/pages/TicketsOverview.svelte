@@ -36,13 +36,11 @@
         metal.currentTime = 0
         piano.play()
         root.classList.toggle('darkmode')
-        console.log(1)
       } else if (!piano.paused) {
         piano.pause()
         piano.currentTime = 0
         metal.play()
         root.classList.toggle('darkmode')
-        console.log(2)
       }
     }
     function noise() {
