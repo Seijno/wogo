@@ -1,11 +1,6 @@
 import { error } from '@sveltejs/kit'
 import contentfulFetch from '../api/contentful-fetch'
 
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
 const query = `
 {
   navigation(id: "4xhowg37MDjXP7okbSrx1b") {

@@ -148,11 +148,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 3rem 2rem;
+    background-color: var(--cs-sky-glacier);
   }
   .carousel-title h2 {
     display: flex;
     padding-bottom: 0.5rem;
-    color: var(--txt-tertiary-clr);
+    color: var(--cs-midnight-lagoon);
     text-transform: uppercase;
   }
   section {
@@ -160,6 +161,7 @@
     width: 100%;
     position: relative;
     overflow: hidden;
+    background-color: var(--cs-sky-glacier);
   }
 
   .card-container {

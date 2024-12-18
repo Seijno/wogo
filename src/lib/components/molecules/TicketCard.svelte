@@ -31,7 +31,6 @@
 
       <div>
         <Button type="button" variant="primary" title="Book Now" size="m" />
-        <Button href="/home/{item.slug}" variant="secondary" title="Read More" size="m" />
       </div>
     </div>
   </article>
