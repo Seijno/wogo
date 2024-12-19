@@ -63,6 +63,11 @@
     border: 2px solid var(--cs-sky-glacier);
   }
 
+  .btn-cs {
+    background-color: rgba(37, 98, 121, 0.8);
+    color: #fff;
+  }
+
   .btn-secondary {
     border-radius: var(--btn-radius);
     color: var(--txt-primary-clr);

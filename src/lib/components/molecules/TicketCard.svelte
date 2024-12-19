@@ -6,7 +6,7 @@
 
 {#each items as item}
   <article class="ticket-card">
-    <div>
+    <div class="image-container">
       <h3>{item.title}</h3>
       <Image
         src={item.image.url}
@@ -15,7 +15,11 @@
         opacity="0.6"
         loading="lazy"
       />
-      <p>{item.price}</p>
+      <p class="price">{item.price}</p>
+      <!-- Button Wrapper -->
+      <div class="top-right-wrapper">
+        <Button type="button" variant="cs" title="Boek Nu" size="m" />
+      </div>
     </div>
 
     <div>
@@ -28,10 +32,6 @@
         <span><CocktailIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
         {item.cocktailDescription}
       </p>
-
-      <div>
-        <Button type="button" variant="primary" title="Book Now" size="m" />
-      </div>
     </div>
   </article>
 {/each}
@@ -46,16 +46,9 @@
     scroll-snap-align: center;
   }
 
-  div:nth-of-type(1) {
+  .image-container {
     position: relative;
     background: linear-gradient(137deg, rgba(206, 101, 56, 1) 0%, rgba(32, 22, 17, 1) 0%);
-  }
-
-  div:nth-of-type(2) {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1em;
   }
 
   h3 {
@@ -71,7 +64,7 @@
     z-index: 1;
   }
 
-  div:first-of-type p {
+  .price {
     position: absolute;
     left: 1em;
     top: 1em;
@@ -81,21 +74,26 @@
     color: var(--btn-primary-text-clr);
     background-color: var(--btn-secondary-bg);
   }
+
+  .top-right-wrapper {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
+
+  div:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1em;
+  }
+
   p {
     display: flex;
     align-items: center;
     gap: 1rem;
     font-size: var(--fs-md);
     color: var(--txt-dark-clr);
-  }
-
-  div:nth-of-type(2) > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: none;
-    gap: 0.2em;
-    padding: 0.9rem 0;
   }
 
   @media screen and (min-width: 48em) {
