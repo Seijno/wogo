@@ -65,6 +65,7 @@
     gap: 1rem;
     padding: 1em;
   }
+
   h3 {
     font-size: var(--fs-lg);
   }

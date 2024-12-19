@@ -3,6 +3,17 @@
   import { Link, CartIcon, ArrowDown, Button } from '$lib/index'
   import logo from '$lib/assets/WOGOLogoWhite.avif'
   export let navigation
+  let isSnowing = false
+  //coding spike
+  function toggleSnow() {
+    isSnowing = !isSnowing
+    const snowContainer = document.querySelector('#snow-container')
+    if (isSnowing) {
+      snowContainer.style.display = 'block'
+    } else {
+      snowContainer.style.display = 'none'
+    }
+  }
 
   // custom js
   onMount(() => {
@@ -94,12 +105,18 @@
                       color="var(--txt-dark-clr)"
                     />
                   </li>
+                  <li>
+                    <Button variant="primary" size="sm" on:click={toggleSnow} title="Let It Snow" />
+                  </li>
                 {/each}
               </ul>
             {/if}
           </li>
         {/if}
       {/each}
+      <li>
+        <Button variant="primary" size="sm" on:click={toggleSnow} title="Let It Snow" />
+      </li>
     </ul>
   </nav>
   <section class="mobileMenu">
@@ -405,6 +422,33 @@
     }
     :global(.hiding) {
       display: none;
+    }
+    #snow-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      font-size: 1em;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
     }
     @media (prefers-reduced-motion: no-preference) {
       :global(.showing) {
