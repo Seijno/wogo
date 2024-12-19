@@ -14,6 +14,17 @@
   function nextImage() {
     currentImageIndex = (currentImageIndex + 1) % images.length
   }
+
+  function playAudio() {
+    const audio = document.getElementById('snowGlobeSound')
+    audio.play()
+  }
+
+  function stopAudio() {
+    const audio = document.getElementById('snowGlobeSound')
+    audio.pause()
+    audio.currentTime = 0 // Reset the audio playback time
+  }
 </script>
 
 <section>
@@ -32,7 +43,13 @@
       </h1>
       <p>{items[0].subtitle}</p>
     </div>
-    <div class="snow-ball">
+    <div
+      class="snow-ball"
+      role="button"
+      tabindex="0"
+      on:mouseover={playAudio}
+      on:mouseout={stopAudio}
+    >
       <div class="snow-globe">
         <div class="ball-container">
           <img src={images[currentImageIndex]} alt="Cocktail" class="cocktail-image" />
@@ -54,6 +71,7 @@
       <div class="shadow"></div>
     </div>
   </div>
+  <audio id="snowGlobeSound" src="/src/lib/assets/snowglobe.mp3"></audio>
 </section>
 
 <style>
