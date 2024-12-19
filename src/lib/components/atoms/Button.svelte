@@ -6,10 +6,31 @@
   export let title = ''
   export let icon = ''
   export let iconColor = ''
+
+  // Audio play and stop functions
+  function playAudio() {
+    const audio = document.getElementById('buttonAudio')
+    audio.play()
+  }
+
+  function stopAudio() {
+    const audio = document.getElementById('buttonAudio')
+    audio.pause()
+    audio.currentTime = 0
+  }
 </script>
 
 {#if href}
-  <a {href} data-sveltekit-preload-data class="btn btn-{variant} btn-{size}" {...$$restProps}>
+  <a
+    {href}
+    data-sveltekit-preload-data
+    class="btn btn-{variant} btn-{size}"
+    {...$$restProps}
+    on:mouseover={playAudio}
+    on:mouseout={stopAudio}
+    on:focus={playAudio}
+    on:blur={stopAudio}
+  >
     {title}
     {#if icon}
       <span class="btn-icon">
@@ -19,7 +40,15 @@
     <slot></slot>
   </a>
 {:else}
-  <button {type} class="btn btn-{variant} btn-{size}" {...$$restProps} on:click>
+  <button
+    {type}
+    class="btn btn-{variant} btn-{size}"
+    {...$$restProps}
+    on:mouseover={playAudio}
+    on:mouseout={stopAudio}
+    on:focus={playAudio}
+    on:blur={stopAudio}
+  >
     {title}
     {#if icon}
       <span class="btn-icon">
@@ -29,6 +58,9 @@
     <slot></slot>
   </button>
 {/if}
+
+<!-- Audio element -->
+<audio id="buttonAudio" src="/src/lib/assets/christmasbells.mp3"></audio>
 
 <style>
   .btn {

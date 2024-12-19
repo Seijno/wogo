@@ -43,6 +43,7 @@
       </h1>
       <p>{items[0].subtitle}</p>
     </div>
+    <!-- svelte-ignore a11y-mouse-events-have-key-events -->
     <div
       class="snow-ball"
       role="button"
