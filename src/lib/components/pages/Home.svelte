@@ -23,4 +23,3 @@
 <HowItWorks {items} />
 <HeadLine title="What We Do" />
 <WhatWeDo {items} />
-<GiftCard items={items[3]} />
