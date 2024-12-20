@@ -11,7 +11,8 @@
     align-items: center;
     text-transform: uppercase;
     font-size: var(--fs-xl);
-    color: var(--txt-tertiary-clr);
+    color: var(--cs-midnight-lagoon);
+    background-color: var(--cs-sky-glacier);
     padding: 1em;
   }
 </style>

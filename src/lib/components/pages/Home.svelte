@@ -19,7 +19,5 @@
 <Hero {items} />
 <Reviews {items} />
 <TicketCarousel {itemCollection} />
-<HeadLine title="How It Works" />
-<HowItWorks {items} />
 <HeadLine title="What We Do" />
 <WhatWeDo {items} />
