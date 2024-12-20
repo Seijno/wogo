@@ -102,8 +102,8 @@
 
   .btn-secondary {
     border-radius: var(--btn-radius);
-    color: var(--txt-primary-clr);
-    border: 2px solid var(--btn-primary-bg);
+    color: var(--cs-midnight-lagoon);
+    border: 2px solid var(--cs-midnight-lagoon);
   }
 
   .btn-menu {
