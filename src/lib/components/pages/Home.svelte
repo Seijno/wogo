@@ -18,6 +18,9 @@
 
 <Hero {items} />
 <Reviews {items} />
+<HeadLine title="Explore Walks" />
 <TicketCarousel {itemCollection} />
+<HeadLine title="How It Works" />
+<HowItWorks {items} />
 <HeadLine title="What We Do" />
 <WhatWeDo {items} />
