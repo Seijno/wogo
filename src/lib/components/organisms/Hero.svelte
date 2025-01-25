@@ -61,6 +61,7 @@
             src={images[currentImageIndex]}
             alt={`Cocktail ${currentImageIndex + 1}`}
             class="cocktail-image"
+            loading="lazy"
           />
           <div class="snowman">
             <div class="scarf"></div>
