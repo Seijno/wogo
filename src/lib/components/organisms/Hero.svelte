@@ -3,35 +3,36 @@
 
   export let items
 
-  let currentImageIndex = 0
-
   import cocktail1 from '$lib/assets/cocktail1.png'
   import cocktail2 from '$lib/assets/cocktail2.png'
   import cocktail3 from '$lib/assets/cocktail3.png'
 
   const images = [cocktail1, cocktail2, cocktail3]
+  let currentImageIndex = 0
 
-  function nextImage() {
+  const nextImage = () => {
     currentImageIndex = (currentImageIndex + 1) % images.length
   }
 
-  function playAudio() {
+  const playAudio = () => {
     const audio = document.getElementById('snowGlobeSound')
-    audio.play()
+    audio?.play()
   }
 
-  function stopAudio() {
+  const stopAudio = () => {
     const audio = document.getElementById('snowGlobeSound')
-    audio.pause()
-    audio.currentTime = 0 // Reset the audio playback time
+    if (audio) {
+      audio.pause()
+      audio.currentTime = 0
+    }
   }
 </script>
 
-<section>
+<section aria-labelledby="hero-title">
   <div class="hero-wrapper">
     <div class="hero-content">
       <h1>
-        {items[0].title}
+        {items?.[0]?.title ?? 'Cocktail of the Day'}
         <Button
           variant="primary"
           title="Book Now"
@@ -41,19 +42,26 @@
         />
         <Button variant="primary" title="Shake It" size="lg" on:click={nextImage} />
       </h1>
-      <p>{items[0].subtitle}</p>
+      <p>{items?.[0]?.subtitle ?? 'Enjoy our signature cocktails!'}</p>
     </div>
-    <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+
     <div
       class="snow-ball"
       role="button"
       tabindex="0"
+      aria-label="Interactive snow globe with cocktails"
       on:mouseover={playAudio}
       on:mouseout={stopAudio}
+      on:focus={playAudio}
+      on:blur={stopAudio}
     >
       <div class="snow-globe">
         <div class="ball-container">
-          <img src={images[currentImageIndex]} alt="Cocktail" class="cocktail-image" />
+          <img
+            src={images[currentImageIndex]}
+            alt={`Cocktail ${currentImageIndex + 1}`}
+            class="cocktail-image"
+          />
           <div class="snowman">
             <div class="scarf"></div>
             <div class="hat"></div>
@@ -72,15 +80,22 @@
       <div class="shadow"></div>
     </div>
   </div>
-  <audio id="snowGlobeSound" src="/src/lib/assets/snowglobe.mp3"></audio>
+  <audio id="snowGlobeSound" src="/src/lib/assets/snowglobe.mp3" preload="auto"></audio>
 </section>
 
 <style>
+  :root {
+    --primary-color: #ffffff;
+    --secondary-color: #000000;
+    --gradient-start: var(--cs-midnight-lagoon);
+    --gradient-end: var(--cs-sky-glacier);
+  }
+
   section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(180deg, var(--cs-midnight-lagoon) 0%, var(--cs-sky-glacier) 100%);
+    background: linear-gradient(180deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     position: relative;
     height: 55vh;
     overflow: hidden;
@@ -91,13 +106,14 @@
     align-items: flex-start;
     gap: 2rem;
     max-width: 100%;
+    flex-wrap: wrap;
   }
 
   .hero-content {
     padding: 1rem;
     margin-top: 3rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--primary-color);
     max-width: 60%;
   }
 
@@ -105,6 +121,18 @@
     position: relative;
     top: -15px;
     max-width: 40%;
+  }
+
+  .cocktail-image {
+    position: absolute;
+    width: 150px;
+    object-fit: cover;
+    bottom: 6rem;
+    left: 5rem;
+  }
+
+  .snow-globe {
+    position: relative;
   }
 
   .ball-container {
@@ -310,8 +338,8 @@
     width: 255px;
     height: 20px;
     background-color: #625f56;
-    top: 335px;
-    left: 63px;
+    top: 300px;
+    left: 60px;
   }
 
   .holder:before {
@@ -321,117 +349,74 @@
     height: 0;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    border-bottom: 60px solid #7d7360;
+    border-bottom: 60px solid #625f56;
     top: 20px;
-    left: -10px;
-  }
-
-  .holder:after {
-    content: '';
-    position: absolute;
-    width: 285px;
-    height: 5px;
-    border-radius: 20px;
-    background-color: #625f56;
-    top: 75px;
-    left: -15px;
-  }
-
-  .shadow {
-    position: absolute;
-    width: 370px;
-    height: 10px;
-    border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.2);
-    top: 410px;
-    left: 4px;
-    transition: 0.3s;
   }
 
   .snowfall {
     position: absolute;
-    z-index: 6;
+    top: 40px;
+    left: 30px;
+    z-index: 2;
   }
 
   .snowflake,
   .snowflake1,
   .snowflake2 {
     position: absolute;
+    background-color: #ffffff;
     border-radius: 50%;
-    background-color: white;
-    width: 7px;
-    height: 7px;
-    filter: blur(1px);
-    left: 50px;
-    box-shadow:
-      40px 40px white,
-      -40px -40px white,
-      80px 60px white,
-      100px -70px white,
-      110px -20px white,
-      20px -20px white,
-      120px 40px white,
-      150px 10px white,
-      180px 20px white,
-      50px -60px white,
-      100px 20px white,
-      150px -80px white,
-      170px -50px white,
-      185px -70px white,
-      190px 40px white,
-      220px -10px white,
-      230px -60px white,
-      240px -30px white,
-      250px 20px white,
-      260px -80px white,
-      -20px 20px white,
-      10px 10px white,
-      280px -40px white,
-      300px -10px white,
-      320px -100px white,
-      290px -110px white,
-      100px -100px white,
-      80px -120px white;
-    animation: fall 2.5s linear infinite;
-  }
-
-  .snowflake {
-    left: 0;
+    width: 8px;
+    height: 8px;
+    opacity: 0.5;
+    animation: snowfall 5s linear infinite;
   }
 
   .snowflake1 {
-    top: -80px;
+    width: 5px;
+    height: 5px;
     left: 60px;
-    animation-delay: 0.5s;
-  }
-
-  .snowflake2 {
-    top: -70px;
-    left: 100px;
     animation-delay: 1s;
   }
 
+  .snowflake2 {
+    width: 10px;
+    height: 10px;
+    left: 120px;
+    animation-delay: 2s;
+  }
+
+  @keyframes snowfall {
+    0% {
+      transform: translateY(-200px);
+    }
+    100% {
+      transform: translateY(200px);
+    }
+  }
+
+  .shadow {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 370px;
+    height: 370px;
+    border-radius: 50%;
+    bottom: -20px;
+    left: 10px;
+    filter: blur(4px);
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  /* Animation and accessibility enhancements */
   .snow-ball:hover .snow-globe {
     animation: shake 0.3s ease;
     animation-iteration-count: 2;
   }
 
-  @keyframes shake {
-    0% {
-      transform: rotate(0);
-    }
-    25% {
-      transform: rotate(-30deg);
-    }
-    50% {
-      transform: rotate(0);
-    }
-    75% {
-      transform: rotate(30deg);
-    }
-    100% {
-      transform: rotate(0);
-    }
+  .snow-ball:focus .snow-globe {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
   }
 
   .snow-ball:hover .shadow {
@@ -441,6 +426,18 @@
   .snow-ball:hover .snowfall {
     animation: bounce 0.5s ease;
     animation-iteration-count: 2;
+  }
+  @keyframes shake {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(-30deg);
+    }
+    75% {
+      transform: rotate(30deg);
+    }
   }
 
   @keyframes bounce {
@@ -460,67 +457,6 @@
     60%,
     80% {
       transform: translateX(20px);
-    }
-  }
-
-  h1 {
-    position: relative;
-    display: inline-block;
-    font-weight: 700;
-    font-size: clamp(2.648rem, 6vw, 4.241rem);
-    letter-spacing: -1px;
-    animation: heading;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes heading {
-    0% {
-      top: -200px;
-    }
-    100% {
-      top: -2px;
-    }
-  }
-
-  p {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.2rem;
-    padding: 0.5rem;
-    text-transform: lowercase;
-    position: relative;
-    animation-name: content;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes content {
-    0% {
-      left: -1000px;
-    }
-    100% {
-      left: 10px;
-    }
-  }
-
-  .cocktail-image {
-    position: absolute;
-    width: 150px; /* Smaller image size */
-    height: auto;
-    object-fit: cover;
-    bottom: 6rem;
-    left: 5rem;
-  }
-
-  @keyframes fall {
-    0% {
-      transform: translateY(-50px);
-      opacity: 0.9;
-    }
-    100% {
-      transform: translateY(380px);
-      opacity: 0.2;
     }
   }
 </style>
